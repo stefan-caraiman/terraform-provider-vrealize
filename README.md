@@ -7,7 +7,7 @@ This provider uses the https://github.com/sky-mah96/govrealize client library to
 ## Usage
 Build the provider
 ```bash
-go build -o terraform-provider-vrealize github.com/sky-mah96terraform-provider-vrealize && cp terraform-provider-vrealize /usr/local/terraform/
+go build -o terraform-provider-vrealize github.com/sky-mah96/terraform-provider-vrealize && cp terraform-provider-vrealize /usr/local/terraform/
 ```
 Configure vRealize provider in a .tf file
 ```golang
