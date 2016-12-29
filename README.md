@@ -2,12 +2,12 @@
 Terraform vRealize provider
 
 ## Introduction
-This provider uses the https://github.com/sky-mah96/govrealize client library to implement creation, reading and deletion vRealize machines.
+This provider uses the https://github.com/sky-uk/govrealize client library to implement creation, reading and deletion vRealize machines.
 
 ## Usage
 Build the provider
 ```bash
-go build -o terraform-provider-vrealize github.com/sky-mah96/terraform-provider-vrealize && cp terraform-provider-vrealize /usr/local/terraform/
+go build -o terraform-provider-vrealize github.com/sky-uk/terraform-provider-vrealize && cp terraform-provider-vrealize /usr/local/terraform/
 ```
 Configure vRealize provider in a .tf file
 ```golang

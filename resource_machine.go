@@ -5,7 +5,7 @@ import (
 	"log"
 
 	"github.com/hashicorp/terraform/helper/schema"
-	"github.com/sky-mah96/govrealize"
+	"github.com/sky-uk/govrealize"
 )
 
 func resourceMachine() *schema.Resource {

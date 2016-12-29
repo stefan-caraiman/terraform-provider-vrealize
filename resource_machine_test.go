@@ -6,7 +6,7 @@ import (
 
 	"github.com/hashicorp/terraform/helper/resource"
 	"github.com/hashicorp/terraform/terraform"
-	"github.com/sky-mah96/govrealize"
+	"github.com/sky-uk/govrealize"
 )
 
 func TestAccVrealizeMachine_Basic(t *testing.T) {
