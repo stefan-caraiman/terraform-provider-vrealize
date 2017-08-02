@@ -8,16 +8,16 @@ provider "vrealize" {
 
 resource "vrealize_machine" "machine" {
   count            = 1
-  catalogItemRefId = "c94fa0c3-4aed-43ce-b7a6-4163a07e4cd6"
-  tenantRef        = "vsphere.local"
-  subTenantRef     = "f04f060d-73be-48a3-b82c-20cb98efd2d2"
+  catalog_item_ref_id = "c94fa0c3-4aed-43ce-b7a6-4163a07e4cd6"
+  tenant_ref        = "vsphere.local"
+  sub_tenant_ref     = "f04f060d-73be-48a3-b82c-20cb98efd2d2"
 
-  requestData = {
+  request_data = {
     key   = "provider-Cafe.Shim.VirtualMachine.Description"
     value = "Test API request"
   }
 
-  requestData = {
+  request_data = {
     key   = "reasons"
     value = "Test reason"
   }

@@ -5,7 +5,7 @@ import (
 	"log"
 
 	"github.com/hashicorp/terraform/helper/schema"
-	"github.com/sky-uk/govrealize"
+	"github.com/stefan-caraiman/govrealize"
 )
 
 func resourceMachine() *schema.Resource {
@@ -15,22 +15,22 @@ func resourceMachine() *schema.Resource {
 		Delete: resourceMachineDelete,
 
 		Schema: map[string]*schema.Schema{
-			"catalogItemRefId": &schema.Schema{
+			"catalog_item_ref_id": &schema.Schema{
 				Type:     schema.TypeString,
 				Required: true,
 				ForceNew: true,
 			},
-			"tenantRef": &schema.Schema{
+			"tenant_ref": &schema.Schema{
 				Type:     schema.TypeString,
 				Required: true,
 				ForceNew: true,
 			},
-			"subTenantRef": &schema.Schema{
+			"sub_tenant_ref": &schema.Schema{
 				Type:     schema.TypeString,
 				Required: true,
 				ForceNew: true,
 			},
-			"requestData": &schema.Schema{
+			"request_data": &schema.Schema{
 				Type:     schema.TypeList,
 				Optional: true,
 				ForceNew: true,
@@ -74,10 +74,10 @@ func resourceMachineCreate(d *schema.ResourceData, m interface{}) error {
 		},
 	}}
 
-	requestDataCount := d.Get("requestData.#").(int)
+	requestDataCount := d.Get("request_data.#").(int)
 
 	for i := 0; i < requestDataCount; i++ {
-		prefix := fmt.Sprintf("requestData.%d", i)
+		prefix := fmt.Sprintf("request_data.%d", i)
 		key := d.Get(prefix + ".key").(string)
 		value := d.Get(prefix + ".value").(string)
 		if key != "provider-Cafe.Shim.VirtualMachine.NumberOfInstances" {
@@ -96,11 +96,11 @@ func resourceMachineCreate(d *schema.ResourceData, m interface{}) error {
 	opts := &govrealize.MachineCreateRequest{
 		Type: "CatalogItemRequest",
 		CatalogItemRef: govrealize.MachineCreateRequestCatalogItemRef{
-			ID: d.Get("catalogItemRefId").(string),
+			ID: d.Get("catalog_item_ref_id").(string),
 		},
 		Organization: govrealize.MachineCreateRequestOrganization{
-			TenantRef:    d.Get("tenantRef").(string),
-			SubtenantRef: d.Get("subTenantRef").(string),
+			TenantRef:    d.Get("tenant_ref").(string),
+			SubtenantRef: d.Get("sub_tenant_ref").(string),
 		},
 		State:         "SUBMITTED",
 		RequestNumber: 0,
@@ -156,10 +156,10 @@ func resourceMachineRead(d *schema.ResourceData, m interface{}) error {
 		return err
 	}
 
-	d.Set("catalogItemRefId", machine.CatalogItem.ID)
-	d.Set("tenantRef", machine.Organization.TenantRef)
-	d.Set("subTenantRef", machine.Organization.SubtenantRef)
-	d.Set("requestData", machine.ResourceData)
+	d.Set("catalog_item_ref_id", machine.CatalogItem.ID)
+	d.Set("tenant_ref", machine.Organization.TenantRef)
+	d.Set("sub_tenant_ref", machine.Organization.SubtenantRef)
+	d.Set("request_data", machine.ResourceData)
 	if machine.IPAddress() != "" {
 		ip := machine.IPAddress()
 		name := machine.MachineName()

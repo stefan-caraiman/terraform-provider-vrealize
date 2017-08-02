@@ -6,7 +6,7 @@ import (
 
 	"github.com/hashicorp/terraform/helper/resource"
 	"github.com/hashicorp/terraform/terraform"
-	"github.com/sky-uk/govrealize"
+	"github.com/stefan-caraiman/govrealize"
 )
 
 func TestAccVrealizeMachine_Basic(t *testing.T) {
@@ -38,13 +38,13 @@ func TestAccVrealizeMachine_Basic(t *testing.T) {
 				Check: resource.ComposeTestCheckFunc(
 					testAccCheckVrealizeMachineExists("vrealize_machine.foobar", &machine),
 					resource.TestCheckResourceAttr(
-						"vrealize_machine.foobar", "catalogItemRefId", "c94fa0c3-4aed-43ce-b7a6-4163a07e4cd6"),
+						"vrealize_machine.foobar", "catalog_item_ref_id", "c94fa0c3-4aed-43ce-b7a6-4163a07e4cd6"),
 					resource.TestCheckResourceAttr(
-						"vrealize_machine.foobar", "tenantRef", "vsphere.local"),
+						"vrealize_machine.foobar", "tenant_ref", "vsphere.local"),
 					resource.TestCheckResourceAttr(
-						"vrealize_machine.foobar", "subTenantRef", "f04f060d-73be-48a3-b82c-20cb98efd2d2"),
+						"vrealize_machine.foobar", "sub_tenant_ref", "f04f060d-73be-48a3-b82c-20cb98efd2d2"),
 					resource.TestCheckResourceAttr(
-						"vrealize_machine.foobar", "requestData", requestDataMapString),
+						"vrealize_machine.foobar", "request_data", requestDataMapString),
 				),
 			},
 		},
@@ -53,10 +53,10 @@ func TestAccVrealizeMachine_Basic(t *testing.T) {
 
 const testAccCheckVrealizeMachineConfigBasic = `
 resource "machine" "test" {
-    catalogItemRefId = "c94fa0c3-4aed-43ce-b7a6-4163a07e4cd6"
-    tenantRef = "vsphere.local"
-    subTenantRef = "f04f060d-73be-48a3-b82c-20cb98efd2d2"
-	requestData = {
+    catalog_item_ref_id = "c94fa0c3-4aed-43ce-b7a6-4163a07e4cd6"
+    tenant_ref = "vsphere.local"
+    sub_tenant_ref = "f04f060d-73be-48a3-b82c-20cb98efd2d2"
+	request_data = {
         key = "provider-provisioningGroupId"
 		value = "f04f060d-73be-48a3-b82c-20cb98efd2d2"
 	}

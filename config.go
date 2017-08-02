@@ -7,7 +7,7 @@ import (
 	"time"
 
 	"github.com/dghubble/sling"
-	"github.com/sky-uk/govrealize"
+	"github.com/stefan-caraiman/govrealize"
 	"golang.org/x/oauth2"
 )
 
